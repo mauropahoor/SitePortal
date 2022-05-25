@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "siteportal157": {
+      "hosting": {
+        "SitePortal": [
+          "siteportal157"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "siteportal157"
+  }
+}
