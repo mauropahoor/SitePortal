@@ -1,0 +1,27 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    background-color:  	 	#ffffff;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#menu_bar{
+    list-style-type: none;
+}
+#menu_bar > li {
+    float: left;
+    padding: 0.5em 0.5em 0.5em 0em;
+    margin: 1em 1em 1em 0em;
+}
+a{
+    color: #000000;
+}
+a:hover{
+    text-decoration: none;
+}
+#menu_bar > li:active{
+    background-color:  	#444242;
+}

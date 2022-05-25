@@ -1,0 +1,5 @@
+#quiz{
+    padding: 100px 0;
+    display: grid;
+    place-items: center;
+}

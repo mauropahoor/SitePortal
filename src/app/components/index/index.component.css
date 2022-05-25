@@ -1,0 +1,14 @@
+#introduction{
+	background: url("../../../assets/indexBackground.jpg");
+	background-size: cover;
+	padding: 180px 0;
+	color: #fff;
+}
+.container{
+    padding-right: 50%;
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        padding-right: 0%;
+    }   
+}
