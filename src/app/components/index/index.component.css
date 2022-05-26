@@ -4,11 +4,29 @@
 	padding: 180px 0;
 	color: #fff;
 }
-.container{
+#introduction > .container{
     padding-right: 50%;
 }
+
+#projectImg {
+    float: right; 
+    margin-bottom: 2em;
+    width: 600px;
+    height: 200px;
+    max-width: 100%;
+}
+
 @media only screen and (max-width: 600px) {
-    .container{
+    #introduction > .container{
         padding-right: 0%;
+    }
+    #projectImg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto; 
+        margin-bottom: 2em;
+        width: 600px;
+        height: 200px;
+        max-width: 100%;
     }   
 }
