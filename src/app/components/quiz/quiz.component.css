@@ -1,5 +1,21 @@
 #quiz{
-    padding: 100px 0;
+    padding-bottom: 100px;
+    padding-left: 15em;
+    padding-right: 15em;
     display: grid;
     place-items: center;
+    
+}
+@media only screen and (max-width: 600px) {
+    #quiz{
+        padding-bottom: 50px;
+        padding-left: 1em;
+        padding-right: 1em;
+        display: grid;
+        place-items: center;
+        
+    }   
+}
+.centerText{
+    text-align: center;
 }
