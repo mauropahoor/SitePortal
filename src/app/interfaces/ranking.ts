@@ -1,5 +1,6 @@
 export interface Ranking {
-    id: number;
+    id: string;
     name: string;
-    position: string;
+    position: number;
+    points: number;
 }

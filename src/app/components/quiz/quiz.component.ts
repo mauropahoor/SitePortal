@@ -41,6 +41,7 @@ export class QuizComponent implements OnInit {
     this.result.shift();
     this.showQuiz = false;
     this.showScore = true;
+    this.QuizService.updateRanking(this.name,this.points);
   }
 
   form = new FormGroup({
