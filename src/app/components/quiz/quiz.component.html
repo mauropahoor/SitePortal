@@ -6,7 +6,11 @@
             perguntas e concorra ao topo do ranking!
         </p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet massa in massa vehicula fermentum facilisis in quam. Ut tristique facilisis blandit. Suspendisse vehicula auctor nibh, in placerat quam. Nulla venenatis lorem a venenatis ornare. Curabitur feugiat, risus in mollis mattis, urna mauris ornare urna, nec laoreet magna orci ac elit. Nullam pharetra tincidunt neque, ut faucibus ligula dapibus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis nibh id mauris tempor, vel lacinia ipsum dapibus. Maecenas ac sem porttitor, accumsan urna a, molestie dui. Maecenas dignissim nunc imperdiet, tempus ipsum ac, maximus ipsum. Curabitur nibh libero, ultrices vitae metus eu, rutrum volutpat neque. In in tristique eros. consectetur adipiscing elit. In sit amet massa in massa vehicula fermentum facilisis in quam. Ut tristique facilisis blandit. Suspendisse vehicula auctor nibh, in placerat quam. Nulla venenatis lorem a venenatis ornare. Curabitur feugiat, risus in mollis. consectetur adipiscing elit. In sit amet massa in massa vehicula fermentum facilisis in quam. Ut tristique facilisis blandit. Suspendisse vehicula auctor nibh, in placerat quam. Nulla venenatis lorem a venenatis ornare. Curabitur feugiat, risus in mollis </p>
-        <div class="centerText"><button class="btn" (click)="startQuiz()">Iniciar!</button></div>
+        <div class="form__group field">
+            <input type="input" class="form__field" placeholder="Digite seu nome" name="name" id='name' required #name />
+            <label for="name" class="form__label">Digite seu nome</label>
+        </div>
+        <div class="centerText"><button class="btn" (click)="startQuiz(name.value)">Iniciar!</button></div>
     </div>
     <div *ngIf="showQuiz">
         <form [formGroup]="form" (ngSubmit)="submit()">
@@ -17,11 +21,31 @@
                 <p><input type="radio" name="{{ i }}" value="3" formControlName="{{ i }}"> {{ question.answer3 }}</p>
             </div>
             <div class="centerText">
-                <a routerLink="/ranking"><button class="btn btn-primary" type="submit" >Submit</button></a>
+                <button class="btn btn-primary" type="submit" >Submit</button>
             </div>
         </form>
     </div>
+    <div *ngIf="showScore">
+        <p>Parabens {{ name }}, vc fez {{ points }} pontos!</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="3">Correção:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of result; let i = index">
+                    <td>
+                        {{ i }}
+                    </td>
+                    <td>
+                        -->
+                    </td>
+                    <td>
+                        {{ result.answer }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-<script>
-    const selectedColor = document.querySelector('input[name="0"]:checked').value;
-</script>

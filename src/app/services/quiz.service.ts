@@ -15,15 +15,16 @@ export class QuizService {
     }) 
   }
   checkAnswers(questions: any[], answers: any[]){
-    let points = 0;
+    let result: any[] = [{points: 0}];
     for(let i = 0;i < questions.length; i++){
-      console.log(questions[i].correct,":Correto");
-      console.log(answers[i],":Mandei");
-
       if(questions[i].correct == answers[i]){
-        points++;
+        result[0].points += 1;
+        result.push({answer: "Acertou!!"});
+      }
+      else{
+        result.push({answer: "Errou!!"});
       }
     }
-    return points
+    return result
   }
 }

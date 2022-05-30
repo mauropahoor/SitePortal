@@ -16,7 +16,10 @@ export class QuizComponent implements OnInit {
 
   showMenu = true;
   showQuiz = false;
+  showScore = false;
+  result: any[] = [];
   points = 0;
+  name: string = "";
 
   questions: any[] = [];
   answers: any[] = [];
@@ -25,15 +28,19 @@ export class QuizComponent implements OnInit {
     this.questions = await this.QuizService.getQuestions();
   }
 
-  startQuiz(){
+  startQuiz(name: string){
+    this.name = name;
     this.showMenu = false;
     this.showQuiz = true;
     this.getQuestions();
   }
 
   checkAnswers(){
-    this.points = this.QuizService.checkAnswers(this.questions, this.answers);
-    console.log(this.points, "SIUUUUUUU");
+    this.result = this.QuizService.checkAnswers(this.questions, this.answers);
+    this.points = this.result[0].points;
+    this.result.shift();
+    this.showQuiz = false;
+    this.showScore = true;
   }
 
   form = new FormGroup({
