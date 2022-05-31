@@ -3,3 +3,21 @@
     display: grid;
     place-items: center;
 }
+#alertdiv{
+    margin-top: 10px;
+}
+#alert{
+    color: #c0221a; 
+    background-color: white;
+    font-weight: bold;
+    border-radius: 5px 5px 5px;
+    padding: 0.2em;
+    border: 1px solid #c0221a;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 80px; /* Margin bottom by footer height */
+}

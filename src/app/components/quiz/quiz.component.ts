@@ -14,6 +14,7 @@ export class QuizComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  noName = false;
   showMenu = true;
   showQuiz = false;
   showScore = false;
@@ -29,19 +30,25 @@ export class QuizComponent implements OnInit {
   }
 
   startQuiz(name: string){
-    this.name = name;
-    this.showMenu = false;
-    this.showQuiz = true;
-    this.getQuestions();
+    if(name != ''){
+      this.name = name;
+      this.showMenu = false;
+      this.showQuiz = true;
+      this.getQuestions();
+    }
+    else{
+      this.noName = true;
+      setTimeout(() => { this.noName = false; }, 3000);
+    }
   }
 
   checkAnswers(){
     this.result = this.QuizService.checkAnswers(this.questions, this.answers);
-    this.points = this.result[0].points;
-    this.result.shift();
+    this.points = this.result[0].points; //Get the points
+    this.result.shift(); //Remove the points index of the vector
     this.showQuiz = false;
     this.showScore = true;
-    this.QuizService.updateRanking(this.name,this.points);
+    this.QuizService.updateRanking(this.name,this.points); //Update the ranking with just the positions
   }
 
   form = new FormGroup({
@@ -69,9 +76,15 @@ export class QuizComponent implements OnInit {
   }
 
    
+  noAnswer = false;
   submit(){
     for(let i = 0; i < this.questions.length; i++){
       this.answers[i] = this.form.value[i];
+      if(this.form.value[i] == ""){
+        this.noAnswer = true;
+        setTimeout(() => { this.noAnswer = false; }, 3000);
+        return;
+      }
     }
     this.checkAnswers();
   }

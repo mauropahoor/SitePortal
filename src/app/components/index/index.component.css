@@ -4,9 +4,6 @@
 	padding: 180px 0;
 	color: #fff;
 }
-#introduction > .container{
-    padding-right: 50%;
-}
 
 #projectImg {
     float: right; 
@@ -17,9 +14,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-    #introduction > .container{
-        padding-right: 0%;
-    }
     #projectImg {
         display: block;
         margin-left: auto;
