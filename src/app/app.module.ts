@@ -10,13 +10,15 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RankingComponent } from './components/ranking/ranking.component';
+import { EditQuizComponent } from './components/edit-quiz/edit-quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     QuizComponent,
-    RankingComponent
+    RankingComponent,
+    EditQuizComponent
   ],
   imports: [
     BrowserModule,

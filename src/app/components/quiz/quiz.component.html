@@ -17,11 +17,9 @@
     <br>
     <div *ngIf="showQuiz">
         <form [formGroup]="form" (ngSubmit)="submit()">
-            <div *ngFor="let question of questions; let i = index">
-                <h3>{{ i }} --> {{ question.enunciation }}</h3>
-                <p><input type="radio" name="{{ i }}" value="1" formControlName="{{ i }}"> {{ question.answer1 }}</p>
-                <p><input type="radio" name="{{ i }}" value="2" formControlName="{{ i }}"> {{ question.answer2 }}</p>
-                <p><input type="radio" name="{{ i }}" value="3" formControlName="{{ i }}"> {{ question.answer3 }}</p>
+            <div *ngFor="let b of [].constructor(questions.length); let i = index">
+                <h3>{{ i }} --> {{ questions[i].enunciation }}</h3>
+                <p><input type="radio" name="{{ i }}" value="{{ i }}" formControlName="{{ i }}"> {{ questions[i].answers[i] }}</p>
             </div>
             <div class="centerText">
                 <div id="alertdiv" *ngIf="noAnswer">

@@ -29,7 +29,7 @@ export class QuizComponent implements OnInit {
     this.questions = await this.QuizService.getQuestions();
   }
 
-  startQuiz(name: string){
+  async startQuiz(name: string){
     if(name != ''){
       this.name = name;
       this.showMenu = false;

@@ -70,4 +70,23 @@ export class QuizService {
     }
     return result
   }
+  async createQuiz(quiz: any, quizLength: number, answersLength: number){
+    const db = this.db.collection('questions');
+    let questions: any[] = await this.getQuestions();  
+    for(let i = 0; i < questions.length; i++){ //Delete old questions  
+      let id = questions[i].id;
+      let idString = id.toString();
+      db.doc(idString).delete();
+    }
+    for(let i = 0;i < quizLength; i++){
+      let answersArray: any[] = [];
+      for(let j = 0; j < answersLength; j++){
+        console.log(quiz[i].answers[j], "TESTE");
+        answersArray.push(quiz[i].answers[j]);
+      }
+      console.log(answersArray, " :ISSO");
+      db.add({answers: answersArray, enunciation: quiz[i].enunciation, correct: quiz[i].correct});
+    }
+    console.log("SUcess");
+  }
 }
