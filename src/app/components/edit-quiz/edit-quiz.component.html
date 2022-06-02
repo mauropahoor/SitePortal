@@ -13,7 +13,7 @@
                 </select>
             </div>
             <div>
-                <label>Números de respostas:</label>
+                <label>Número de respostas para cada pergunta:</label>
                 <select name="answers" id="answers" #answers>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -26,25 +26,29 @@
                 <button (click)="saveConfig(questions.value, answers.value)" class="btn">Confirmar</button>
             </div>
         </div>
-        <div aria-label="create_quiz" *ngIf="showCreateQuiz">
+        <div aria-label="create_quiz" *ngIf="showCreateQuiz">   
             <p>Configurações:</p>
             <p>{{ configuration.questions }} questões.</p>
             <p>{{ configuration.answers }} respostas.</p>
             <div *ngFor="let b of [].constructor(configuration.questions); let i = index">
                 <div>
-                    <p><input type="text" id="enunciate{{i}}" placeholder="titulo"></p>
+                    <p><input class="effect-1" type="text" id="enunciate{{i}}" placeholder="pergunta"></p>
                 </div>
                 <div *ngFor="let b of [].constructor(configuration.answers); let j = index">
-                    <p><input type="radio" disabled><input type="text" id="answer{{j}}" placeholder="resposta"></p>
+                    <p><input type="radio" disabled>&nbsp;<input class="effect-1" type="text" id="answer{{i}}{{j}}" placeholder="resposta"></p>
                 </div>
                 <div>
                     <p>Resposta correta:</p>
                     <p>
-                        <select id="correct">
-                            <option value="{{k+1}}" *ngFor="let b of [].constructor(configuration.answers); let k = index">{{k+1}}</option>
+                        <select id="correct{{i}}">
+                            <option value="{{k}}" *ngFor="let b of [].constructor(configuration.answers); let k = index">{{k+1}}</option>
                         </select>
                     </p>
                 </div>
+                <hr>
+            </div>
+            <div id="alertdiv" *ngIf="sucess">
+                <span id="alert">Quiz criado com sucesso!</span>
             </div>
             <div>
                 <button class="btn" (click)="createQuiz()">Criar!</button>

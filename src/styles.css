@@ -3,8 +3,14 @@
     display: grid;
     place-items: center;
 }
+table{
+    word-break: break-all;
+    width: auto;
+    table-layout: fixed;
+}
 #alertdiv{
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 #alert{
     color: #c0221a; 

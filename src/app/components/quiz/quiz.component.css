@@ -16,10 +16,10 @@
     }   
 }
 .centerText{
-    text-align: center;
+  text-align: center;
 }
 button{
-    margin: 1rem;
+  margin: 1rem;
 }
 /*Inputs style */
 .form__group {

@@ -69,6 +69,23 @@ export class QuizComponent implements OnInit {
     14: new FormControl('', Validators.required),
     15: new FormControl('', Validators.required),
     16: new FormControl('', Validators.required),
+    17: new FormControl('', Validators.required),
+    18: new FormControl('', Validators.required),
+    19: new FormControl('', Validators.required),
+    20: new FormControl('', Validators.required),
+    21: new FormControl('', Validators.required),
+    22: new FormControl('', Validators.required),
+    23: new FormControl('', Validators.required),
+    24: new FormControl('', Validators.required),
+    25: new FormControl('', Validators.required),
+    26: new FormControl('', Validators.required),
+    27: new FormControl('', Validators.required),
+    28: new FormControl('', Validators.required),
+    29: new FormControl('', Validators.required),
+    30: new FormControl('', Validators.required),
+    31: new FormControl('', Validators.required),
+    32: new FormControl('', Validators.required),
+    33: new FormControl('', Validators.required),
   });
    
   get f(){

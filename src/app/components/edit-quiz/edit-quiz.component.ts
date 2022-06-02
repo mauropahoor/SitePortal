@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Config } from 'src/app/interfaces/config';
 import { Quiz } from 'src/app/interfaces/quiz';
 import { QuizService } from 'src/app/services/quiz.service';
 
@@ -14,12 +15,16 @@ export class EditQuizComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  configuration: any = {};
+  configuration: Config = {
+    questions: 0,
+    answers: 0
+  };
   quiz: Quiz[] = [];
 
 
   showConfigQuiz = true;
   showCreateQuiz = false;
+  sucess = false;
 
   saveConfig(questions: string, answers: string){
     /* Question --> Number of questions 
@@ -30,30 +35,31 @@ export class EditQuizComponent implements OnInit {
     let answerInt = parseInt(answers);
     this.configuration = {questions: questionInt, answers: answerInt};
     for(let i = 0;i < questionInt; i++){
+      /* Create empty Quiz vector */
       this.quiz.push({enunciation:'', correct:0, answers: [].constructor(answerInt)});
     }
     this.showConfigQuiz = false;
     this.showCreateQuiz = true;
   }
-  createQuiz(){
+  async createQuiz(){
     /* Get inputs information and put in the quiz array */
     for(let i = 0;i < this.quiz.length;i++){
       const inputEnunciation = document.getElementById(`enunciate${i}`) as HTMLInputElement | null;
       const valueEnunciation = inputEnunciation?.value;
       this.quiz[i].enunciation = valueEnunciation;
-      const inputCorrect = document.getElementById("correct") as HTMLInputElement | null;
+
+      const inputCorrect = document.getElementById(`correct${i}`) as HTMLInputElement | null;
       const valueCorrect = inputCorrect?.value;
-      console.log("Corroect: ", valueCorrect);
       this.quiz[i].correct = valueCorrect;
-      console.log("Corroect3232: ", this.quiz[i].correct);
 
       for(let j = 0;j < this.configuration.answers;j++){
-        const inputAnswer = document.getElementById(`answer${j}`) as HTMLInputElement | null;
+        const inputAnswer = document.getElementById(`answer${i}${j}`) as HTMLInputElement | null;
         const valueAnswer = inputAnswer?.value;
         this.quiz[i].answers[j] = valueAnswer;
       }
     }
-    this.quizService.createQuiz(this.quiz, this.configuration.questions, this.configuration.answers);
-
+    await this.quizService.createQuiz(this.quiz, this.configuration.questions, this.configuration.answers);
+    this.sucess = true;
+    setTimeout(() => { this.sucess = false; }, 3000);
   }
 }

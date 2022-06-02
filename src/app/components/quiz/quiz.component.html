@@ -17,9 +17,11 @@
     <br>
     <div *ngIf="showQuiz">
         <form [formGroup]="form" (ngSubmit)="submit()">
-            <div *ngFor="let b of [].constructor(questions.length); let i = index">
-                <h3>{{ i }} --> {{ questions[i].enunciation }}</h3>
-                <p><input type="radio" name="{{ i }}" value="{{ i }}" formControlName="{{ i }}"> {{ questions[i].answers[i] }}</p>
+            <div *ngFor="let question of questions; let i = index">
+                <h3>{{ i + 1 }}: {{ question.enunciation }}</h3>
+                <p *ngFor="let b of [].constructor(questions[i].answers.length); let j = index">
+                    <input type="radio" name="{{ i }}" value="{{ j }}" formControlName="{{ i }}"> {{ question.answers[j] }}
+                </p>
             </div>
             <div class="centerText">
                 <div id="alertdiv" *ngIf="noAnswer">
@@ -41,7 +43,7 @@
             <tbody>
                 <tr *ngFor="let result of result; let i = index">
                     <td>
-                        {{ i }}
+                        {{ i + 1 }}
                     </td>
                     <td>
                         -->

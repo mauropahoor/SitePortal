@@ -18,7 +18,6 @@ footer{
     height:auto;   /* Height of the footer */
 }
 #menu_bar > span {
-    padding: 0.5em 0.5em 0.5em 0em;
     margin: 1em 1em 1em 0em;
 } 
 #menu_bar a{
