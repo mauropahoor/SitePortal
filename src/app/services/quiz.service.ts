@@ -20,31 +20,34 @@ export class QuizService {
     const db = this.db.collection('ranking');
     let ranking: Ranking[] = await this.getRanking();
     let position = 0;
-    if(ranking.length < 10){
       for(let i = 0;i < ranking.length;i++){
         if(ranking[i].points <= points){
           position = i+1;
           break;
         }
       }
-      for(let i = 0;i < ranking.length;i++){
-        //Update every position below the new one to +1
-        //This dont let the rank have 2 positions with the same number
-        let id = "";
-        if(ranking[i].position >= position){
-          id = ranking[i].id;
-          let newPos = ranking[i].position += 1;
-          db.doc(id).update({position: newPos});
+      //Check if is a valid position
+      if(position != 0){
+        if(ranking.length < 10){
+          for(let i = 0;i < ranking.length;i++){
+            //Update every position below the new one to +1
+            //This dont let the rank have 2 positions with the same number
+            let id = "";
+            if(ranking[i].position >= position){
+              id = ranking[i].id;
+              let newPos = ranking[i].position += 1;
+              db.doc(id).update({position: newPos});
+            }
+          }
+          db.add({position: position, name: name, points: points});
+        }
+        else{
+          let lastPosition: Ranking[] = await this.getLastPosition();
+          let id = lastPosition[0].id;
+          db.doc(id).delete();
+          this.updateRanking(name, points);
         }
       }
-      db.add({position: position, name: name, points: points});
-    }
-    else{
-      let lastPosition: Ranking[] = await this.getLastPosition();
-      let id = lastPosition[0].id;
-      db.doc(id).delete();
-      this.updateRanking(name, points);
-    }
   }
   getLastPosition(){
     return new Promise<any>((resolve)=> {
