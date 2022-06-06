@@ -17,15 +17,61 @@ footer{
     width:100%;
     height:auto;   /* Height of the footer */
 }
-#menu_bar > span {
-    margin: 1em 1em 1em 0em;
-} 
-#menu_bar a{
-    color: #000000;
+
+.topnav {
+    overflow: hidden;
 }
-#menu_bar a:hover{
+.topnav .icon {
+    display: none;
+}
+
+.topnav a {
+    padding: 0em 1em 1em 0em;
+    color: #000000;
+    
+}
+.topnav a:hover{
     text-decoration: none;
 }
-#menu_bar span:active{
-    background-color:  	#444242;
+
+.topnav img{
+    width: 100px;
+    height: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .topnav a{
+        padding-left: 1em;
+    }
+    .topnav .active {
+        padding-left: 0em;
+    }
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+        float: right;
+        display: block;
+        padding: 8% 1em 8%;
+        font-size: 1.5em;
+    }
+    .topnav img{
+        width: 25%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .topnav.responsive img{
+        width: 26.1%;
+    }
 }
