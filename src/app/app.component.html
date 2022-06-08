@@ -1,19 +1,23 @@
 <header>
   <div id="myTopnav" class="topnav">
     <a href="#" class="active"><img class="logo" src="assets/logo.jpg" alt="Logo"></a>
-    <a href="https://www.instagram.com/portal_prevencionista/">Instagram</a>
     <a routerLink="quiz">Quiz</a>
     <a routerLink="ranking">Ranking</a>
-    <a routerLink="editQuiz">TestQuiz</a>
+    <a routerLink="editQuiz">EditQuiz</a>
     <a href="https://scratch.mit.edu/projects/535763887/fullscreen/">Jogo</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+    <a href="javascript:void(0);" class="icon" onclick="openMenuBar()"><i class="fa fa-bars"></i></a>
   </div> 
 </header>
 <div>
   <router-outlet></router-outlet>
 </div>
-<footer class="footer">
-  <div class="center">
-    <p>Encaixar alguma informação (sobre contato, integrantes) aqui talvez?</p>
-  </div>
+<footer>
+    <br>
+    <div class="social"><a href="https://www.instagram.com/portal_prevencionista/"><i class="icon ion-social-instagram"></i></a><a href="https://twitter.com/PPrevencionista"><i class="icon ion-social-twitter"></i></a></div>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a routerLink="">Home</a></li>
+        <li class="list-inline-item"><a href="https://www.instagram.com/stories/highlights/17850548318518386/">Quem somos?</a></li>
+        <li class="list-inline-item"><a href="https://www.instagram.com/stories/highlights/18080011273076020/">Treinamentos</a></li>
+      </ul>
+    <p class="copyright">Portal_prevencionista / 2022</p>
 </footer>
