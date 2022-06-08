@@ -1,4 +1,4 @@
-<div id="quiz">
+<div id="quiz" class="container">
     <div *ngIf="showMenu">
         <h1>Bem vindo ao quiz da semana!</h1>
         <p>
@@ -16,20 +16,23 @@
     </div>
     <br>
     <div *ngIf="showQuiz">
-        <form [formGroup]="form" (ngSubmit)="submit()">
-            <div *ngFor="let question of questions; let i = index">
-                <h3>{{ i + 1 }}: {{ question.enunciation }}</h3>
-                <p *ngFor="let b of [].constructor(questions[i].answers.length); let j = index">
-                    <input type="radio" name="{{ i }}" value="{{ j }}" formControlName="{{ i }}"> {{ question.answers[j] }}
-                </p>
-            </div>
-            <div class="centerText">
-                <div id="alertdiv" *ngIf="noAnswer">
-                    <span id="alert">Preencha todas as respostas!</span>
+        <div *ngIf="loading; else start">Carregando...</div>
+        <ng-template #start>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div *ngFor="let question of questions; let i = index" class="centerText">
+                    <h3>{{ question.enunciation }}</h3>
+                    <p *ngFor="let b of [].constructor(questions[i].answers.length); let j = index">
+                        <input type="radio" name="{{ i }}" value="{{ j }}" formControlName="{{ i }}"> {{ question.answers[j] }}
+                    </p>
                 </div>
-                <button class="btn btn-primary" type="submit" >Submit</button>
-            </div>
-        </form>
+                <div class="centerText">
+                    <div id="alertdiv" *ngIf="noAnswer">
+                        <span id="alert">Preencha todas as respostas!</span>
+                    </div>
+                    <button class="btn btn-primary" type="submit" >Enviar</button>
+                </div>
+            </form>
+        </ng-template>
     </div>
     <br>
     <div *ngIf="showScore">

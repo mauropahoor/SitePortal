@@ -17,7 +17,10 @@ export class RankingComponent implements OnInit {
 
   ranking: Ranking[] = [];
 
+  loading = true;
+
   async getRank(){
     this.ranking = await this.quizService.getRanking();
+    this.loading = false;
   }
 }

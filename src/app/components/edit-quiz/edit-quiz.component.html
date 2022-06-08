@@ -1,63 +1,61 @@
-<div class="body">
-    <div class="container">
-        <div aria-label="config_quiz" *ngIf="showConfigQuiz" >
-            <h1>Configurar novo quiz:</h1>
-            <div>
-                <label>Quantidade de perguntas:</label>
-                <select name="questions" id="questions" #questions>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-            <div>
-                <label>Número de respostas para cada pergunta:</label>
-                <select name="answers" id="answers" #answers>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div>
-                <button (click)="saveConfig(questions.value, answers.value)" class="btn">Confirmar</button>
-            </div>
+<div class="container">
+    <div aria-label="config_quiz" *ngIf="showConfigQuiz" >
+        <h1>Configurar novo quiz:</h1>
+        <div>
+            <label>Quantidade de perguntas:</label>
+            <select name="questions" id="questions" #questions>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
         </div>
-        <div aria-label="create_quiz" *ngIf="showCreateQuiz">   
-            <p>Configurações:</p>
-            <p>{{ configuration.questions }} questões.</p>
-            <p>{{ configuration.answers }} respostas.</p>
-            <div *ngFor="let b of [].constructor(configuration.questions); let i = index">
-                <div>
-                    <p><input class="effect-1" type="text" id="enunciate{{i}}" placeholder="pergunta"></p>
-                </div>
-                <div *ngFor="let b of [].constructor(configuration.answers); let j = index">
-                    <p><input type="radio" disabled>&nbsp;<input class="effect-1" type="text" id="answer{{i}}{{j}}" placeholder="resposta"></p>
-                </div>
-                <div>
-                    <p>Resposta correta:</p>
-                    <p>
-                        <select id="correct{{i}}">
-                            <option value="{{k}}" *ngFor="let b of [].constructor(configuration.answers); let k = index">{{k+1}}</option>
-                        </select>
-                    </p>
-                </div>
-                <hr>
+        <div>
+            <label>Número de respostas para cada pergunta:</label>
+            <select name="answers" id="answers" #answers>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div>
+            <button (click)="saveConfig(questions.value, answers.value)" class="btn">Confirmar</button>
+        </div>
+    </div>
+    <div aria-label="create_quiz" *ngIf="showCreateQuiz">   
+        <p>Configurações:</p>
+        <p>{{ configuration.questions }} questões.</p>
+        <p>{{ configuration.answers }} respostas.</p>
+        <div *ngFor="let b of [].constructor(configuration.questions); let i = index">
+            <div>
+                <p><input class="effect-1" type="text" id="enunciate{{i}}" placeholder="pergunta"></p>
             </div>
-            <div id="alertdiv" *ngIf="sucess">
-                <span id="alert">Quiz criado com sucesso!</span>
+            <div *ngFor="let b of [].constructor(configuration.answers); let j = index">
+                <p><input type="radio" disabled>&nbsp;<input class="effect-1" type="text" id="answer{{i}}{{j}}" placeholder="resposta"></p>
             </div>
             <div>
-                <button class="btn" (click)="createQuiz()">Criar!</button>
+                <p>Resposta correta:</p>
+                <p>
+                    <select id="correct{{i}}">
+                        <option value="{{k}}" *ngFor="let b of [].constructor(configuration.answers); let k = index">{{k+1}}</option>
+                    </select>
+                </p>
             </div>
+            <hr>
+        </div>
+        <div id="alertdiv" *ngIf="sucess">
+            <span id="alert">Quiz criado com sucesso!</span>
+        </div>
+        <div>
+            <button class="btn" (click)="createQuiz()">Criar!</button>
         </div>
     </div>
 </div>

@@ -1,19 +1,5 @@
-#quiz{
-  padding-left: 15em;
-  padding-right: 15em;
-  margin-top: 2rem;
-  display: grid;
-  place-items: center;
-}
-@media only screen and (max-width: 600px) {
-    #quiz{
-        padding-bottom: 50px;
-        padding-left: 1em;
-        padding-right: 1em;
-        display: grid;
-        place-items: center;
-        
-    }   
+.container{
+  margin-top: 1rem;
 }
 .centerText{
   text-align: center;
@@ -21,6 +7,8 @@
 button{
   margin: 1rem;
 }
+
+
 /*Inputs style */
 .form__group {
     position: relative;

@@ -1,32 +1,35 @@
 <div>
     <h1>Ranking</h1>
-    <table class="table table-dark table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    Posição
-                </th>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Pontos
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let row of ranking">
-                <td>
-                    <b>{{ row.position }}</b>
-                </td>
-                <td>
-                    {{ row.name }}
-                </td>
-                <td>
-                    {{ row.points }}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div *ngIf="loading; else showRanking">Carregando...</div>
+    <ng-template #showRanking>
+        <table class="table table-dark table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Posição
+                    </th>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Pontos
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of ranking">
+                    <td>
+                        <b>{{ row.position }}</b>
+                    </td>
+                    <td>
+                        {{ row.name }}
+                    </td>
+                    <td>
+                        {{ row.points }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
 </div>
 <br>
